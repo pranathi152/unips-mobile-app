@@ -9,6 +9,7 @@ function Sidebar() {
       <h1 className="mb-8 text-center text-xl font-bold md:text-left">
         UNIPS
       </h1>
+      <br/>
 
       <nav className="flex flex-col gap-4">
 

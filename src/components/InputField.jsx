@@ -1,4 +1,4 @@
-function InputField({ label, type, placeholder }) {
+function InputField({ label, type, placeholder, value, onChange, name, autoComplete }) {
   return (
     <div>
       <label className="block mb-2 text-sm font-medium text-slate-800">
@@ -6,8 +6,12 @@ function InputField({ label, type, placeholder }) {
       </label>
 
       <input
+        name={name}
         type={type}
         placeholder={placeholder}
+        value={value}
+        onChange={onChange}
+        autoComplete={autoComplete}
         className="
                       w-full
                       border
