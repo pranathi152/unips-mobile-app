@@ -3,12 +3,7 @@ function Loading({ title, message }) {
     <div className="min-h-screen w-full bg-slate-100 px-4 py-6 sm:px-8 lg:px-12">
       {title && <h1 className="text-4xl font-semibold text-slate-800">{title}</h1>}
 
-      <div
-        className="mt-8 space-y-8"
-        role="status"
-        aria-live="polite"
-        aria-label={message}
-      >
+      <div className="mt-8 space-y-8" role="status" aria-live="polite" aria-label={message}>
         <div className="flex items-center gap-3 text-slate-600">
           <span className="h-5 w-5 animate-spin rounded-full border-2 border-slate-300 border-t-sky-700" />
           <span className="font-medium">{message}</span>

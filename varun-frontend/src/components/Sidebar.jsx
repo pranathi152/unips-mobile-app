@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom"
-import { FaChartLine, FaBell, FaHome } from "react-icons/fa"
+import { FaChartBar, FaChartLine, FaBell, FaHome } from "react-icons/fa"
 
 function Sidebar() {
   return (
@@ -49,6 +49,18 @@ function Sidebar() {
         >
           <FaBell />
           <span className="hidden md:inline">Alerts</span>
+        </NavLink>
+
+        <NavLink
+          to="/analytics"
+          className={({ isActive }) =>
+            isActive
+              ? "flex items-center justify-center gap-3 rounded-lg bg-slate-800 p-3 text-white md:justify-start"
+              : "flex items-center justify-center gap-3 rounded-lg p-3 text-slate-300 hover:bg-slate-800 md:justify-start"
+          }
+        >
+          <FaChartBar />
+          <span className="hidden md:inline">Analytics</span>
         </NavLink>
 
       </nav>

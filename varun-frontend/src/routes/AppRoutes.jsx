@@ -4,6 +4,7 @@ import Login from "../pages/Login"
 import Dashboard from "../pages/Dashboard"
 import Forecast from "../pages/Forecast"
 import Alerts from "../pages/Alerts"
+import Analytics from "../pages/Analytics"
 import MainLayout from "../layouts/MainLayout";
 
 function AppRoutes(){
@@ -13,6 +14,7 @@ function AppRoutes(){
         <Route path="/dashboard" element={<MainLayout><Dashboard/></MainLayout>}/>
         <Route path="/forecast" element={<MainLayout><Forecast/></MainLayout>}/>
         <Route path="/alerts" element={<MainLayout><Alerts/></MainLayout>}/>
+        <Route path="/analytics" element={<MainLayout><Analytics/></MainLayout>}/>
     </Routes>
     </BrowserRouter>
     )
