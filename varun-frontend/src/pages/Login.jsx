@@ -36,17 +36,26 @@ function Login() {
   return (
     <div className="flex min-h-screen flex-col bg-white lg:flex-row">
       <div className="flex w-full bg-white px-8 py-8 sm:px-12 lg:w-1/2 lg:px-20">
-        <div className="relative h-screen w-full">
-          <div className="absolute left-0 top-4">
+        <div className="relative flex h-screen w-full flex-col">
+          <div className="pt-4">
             <Logo />
           </div>
 
-          <div className="flex h-full items-center justify-center">
-            <div className="w-full max-w-[520px]">
-              <h2 className="mb-5 text-4xl font-bold leading-[1.15] text-slate-900">
-                Login to your account
-              </h2><br/> 
-              <form className="space-y-6" onSubmit={handleSubmit}>
+          <div className="flex flex-1 items-center justify-center">
+            <div className="w-full max-w-[480px] animate-fade-in-up">
+              <span className="inline-flex items-center gap-1.5 rounded-full bg-teal-50 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-teal-700">
+                <span className="h-1.5 w-1.5 rounded-full bg-teal-500" />
+                Operations Console
+              </span>
+              <h2 className="mb-2 mt-4 text-4xl font-bold leading-[1.15] text-slate-900">
+                Welcome back
+              </h2>
+              <p className="mb-8 text-sm leading-6 text-slate-500">
+                Sign in to monitor live noise levels, forecasts, and alerts across
+                your network.
+              </p>
+
+              <form className="space-y-5" onSubmit={handleSubmit}>
                 <InputField
                   label="Email"
                   type="email"
@@ -56,7 +65,6 @@ function Login() {
                   onChange={handleChange}
                   autoComplete="email"
                 />
-                <br/>
                 <InputField
                   label="Password"
                   type="password"
@@ -65,38 +73,65 @@ function Login() {
                   value={formData.password}
                   onChange={handleChange}
                   autoComplete="current-password"
-                /> <br/>
+                />
 
                 {error && (
-                  <p className="rounded-lg border border-red-300 bg-red-50 px-4 py-3 text-sm text-red-700">
+                  <p className="flex items-center gap-2 rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm font-medium text-red-700">
                     {error}
                   </p>
                 )}
 
                 <button
                   type="submit"
-                  className="w-full rounded-xl bg-slate-800 py-3 font-medium text-white transition hover:bg-slate-900"
+                  className="w-full rounded-xl bg-gradient-to-r from-teal-600 to-teal-700 py-3 font-semibold text-white shadow-sm shadow-teal-900/20 transition hover:from-teal-700 hover:to-teal-800 active:scale-[0.99]"
                 >
-                  Login
+                  Sign in
                 </button>
               </form>
+
+              <p className="mt-8 text-center text-xs text-slate-400">
+                Authorized personnel only. Access is monitored and logged.
+              </p>
             </div>
           </div>
         </div>
       </div>
 
-      <div className="relative hidden w-1/2 items-center justify-center overflow-hidden bg-black lg:flex">
-        <div className="relative text-center text-white">
-          <h2 className="mb-4 text-4xl font-bold">UNIPS</h2>
+      <div className="relative hidden w-1/2 items-center justify-center overflow-hidden bg-gradient-to-br from-slate-950 via-slate-900 to-teal-950 lg:flex">
+        <div
+          className="pointer-events-none absolute inset-0 opacity-[0.07]"
+          style={{
+            backgroundImage:
+              "linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px)",
+            backgroundSize: "44px 44px",
+          }}
+          aria-hidden="true"
+        />
+        <div
+          className="pointer-events-none absolute -right-24 -top-24 h-96 w-96 rounded-full bg-teal-500/20 blur-3xl"
+          aria-hidden="true"
+        />
+        <div
+          className="pointer-events-none absolute -bottom-32 -left-16 h-80 w-80 rounded-full bg-teal-700/20 blur-3xl"
+          aria-hidden="true"
+        />
 
-          <p className="max-w-sm text-slate-400">(placeholder for now)</p>
+        <div className="relative px-10 text-center text-white">
+          <span className="inline-flex items-center gap-1.5 rounded-full border border-white/15 bg-white/5 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-teal-300">
+            Urban Noise Intelligence
+          </span>
+          <h2 className="mb-4 mt-5 text-4xl font-bold">UNIPS</h2>
+          <p className="mx-auto max-w-sm leading-relaxed text-slate-400">
+            Real-time monitoring, prediction, and reporting for urban noise
+            management.
+          </p>
         </div>
 
         <div className="absolute bottom-8 left-1/2 flex -translate-x-1/2 flex-col items-center">
           <p className="mb-3 text-xs uppercase tracking-[0.2em] text-slate-500">
             powered by
           </p>
-          <img src={gaintlogo} alt="gaint" className="w-[200px] object-contain" />
+          <img src={gaintlogo} alt="gaint" className="w-[200px] object-contain opacity-90" />
         </div>
       </div>
     </div>

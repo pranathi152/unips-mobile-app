@@ -1,10 +1,12 @@
-import { BrowserRouter,Route,Routes } from "react-router-dom";
+import { BrowserRouter,Navigate,Route,Routes } from "react-router-dom";
 
 import Login from "../pages/Login"
 import Dashboard from "../pages/Dashboard"
 import Forecast from "../pages/Forecast"
 import Alerts from "../pages/Alerts"
 import Analytics from "../pages/Analytics"
+import Reports from "../pages/Reports"
+import Settings from "../pages/Settings"
 import MainLayout from "../layouts/MainLayout";
 
 function AppRoutes(){
@@ -15,6 +17,9 @@ function AppRoutes(){
         <Route path="/forecast" element={<MainLayout><Forecast/></MainLayout>}/>
         <Route path="/alerts" element={<MainLayout><Alerts/></MainLayout>}/>
         <Route path="/analytics" element={<MainLayout><Analytics/></MainLayout>}/>
+        <Route path="/reports" element={<MainLayout><Reports/></MainLayout>}/>
+        <Route path="/settings" element={<MainLayout><Settings/></MainLayout>}/>
+        <Route path="*" element={<Navigate to="/dashboard" replace />}/>
     </Routes>
     </BrowserRouter>
     )

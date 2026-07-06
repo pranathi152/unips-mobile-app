@@ -39,7 +39,7 @@ function PredictionChart({ data, safeThreshold }) {
   const thresholdY = getY(safeThreshold);
 
   return (
-    <div className="rounded-lg border border-slate-200 bg-white p-4 shadow-sm sm:p-6">
+    <div className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm sm:p-6">
       <div className="mb-4">
         <div>
           <h3 className="font-semibold text-slate-900">Predicted Noise Levels</h3>
@@ -50,7 +50,7 @@ function PredictionChart({ data, safeThreshold }) {
 
         <div className="mt-3 flex flex-wrap gap-4 text-sm text-slate-600">
           <span className="flex items-center gap-2">
-            <span className="h-0.5 w-5 bg-sky-700" />
+            <span className="h-0.5 w-5 bg-teal-600" />
             Prediction
           </span>
           <span className="flex items-center gap-2">
@@ -60,7 +60,7 @@ function PredictionChart({ data, safeThreshold }) {
         </div>
       </div>
 
-      <div className="relative overflow-x-auto rounded-lg border border-slate-200 bg-slate-50">
+      <div className="relative overflow-x-auto rounded-xl border border-slate-200 bg-slate-50">
         <svg
           className="h-[360px] min-w-[680px] w-full"
           viewBox={`0 0 ${chartWidth} ${chartHeight}`}
@@ -126,7 +126,7 @@ function PredictionChart({ data, safeThreshold }) {
           <polyline
             fill="none"
             points={linePoints}
-            stroke="#0369a1"
+            stroke="#0d9488"
             strokeLinecap="round"
             strokeLinejoin="round"
             strokeWidth="4"

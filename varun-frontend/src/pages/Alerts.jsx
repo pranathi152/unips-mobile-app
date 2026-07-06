@@ -1,12 +1,20 @@
 import { useEffect, useState } from "react";
+import ExportButtons from "../components/ExportButtons";
 import KPIcard from "../components/KPIcard";
 import Loading from "../components/Loading";
+import PageHeader from "../components/PageHeader";
 import { getAlertData } from "../services/alertService";
 
 const severityStyles = {
-  High: "border-red-300 bg-red-50 text-red-700",
-  Medium: "border-amber-300 bg-amber-50 text-amber-700",
-  Low: "border-emerald-300 bg-emerald-50 text-emerald-700",
+  High: "border-red-200 bg-red-50 text-red-700",
+  Medium: "border-amber-200 bg-amber-50 text-amber-700",
+  Low: "border-emerald-200 bg-emerald-50 text-emerald-700",
+};
+
+const severityDots = {
+  High: "bg-red-500",
+  Medium: "bg-amber-500",
+  Low: "bg-emerald-500",
 };
 
 function Alerts() {
@@ -23,39 +31,37 @@ function Alerts() {
   }
 
   return (
-    <div className="min-h-screen w-full bg-slate-100 px-4 py-6 sm:px-8 lg:px-12">
-      <div className="w-full space-y-12">
-        <header>
-          <h1 className="text-4xl font-semibold text-slate-800">Alerts</h1>
-        </header>
-        <br/>
+    <div className="min-h-screen w-full bg-gradient-to-b from-slate-50 to-slate-100 px-4 py-6 sm:px-8 lg:px-12">
+      <div className="mx-auto w-full max-w-7xl space-y-10 animate-fade-in-up">
+        <PageHeader
+          title="Alerts"
+          description="Monitor recent alerts, severity levels, and export alert history for reporting."
+          actions={<ExportButtons filename="unips-alerts" data={alertData.alerts} />}
+        />
+
         <section>
-          <div className="mb-4">
-            <h2 className="text-xl font-semibold text-slate-800">
-              Alert Summary
-            </h2>
-          </div>
+          <h2 className="mb-5 text-lg font-semibold text-slate-800">
+            Alert Summary
+          </h2>
 
           <div className="grid grid-cols-1 justify-items-center gap-6 sm:grid-cols-2 xl:grid-cols-4">
-            <KPIcard title="Active Alerts" value={alertData.activeAlerts} />
-            <KPIcard title="High Risk Zones" value={alertData.highRiskZones} />
-            <KPIcard title="Latest Spike" value={alertData.latestSpike} />
-            <KPIcard title="Status" value={alertData.responseStatus} />
+            <KPIcard title="Active Alerts" value={alertData.activeAlerts} accent="red" />
+            <KPIcard title="High Risk Zones" value={alertData.highRiskZones} accent="amber" />
+            <KPIcard title="Latest Spike" value={alertData.latestSpike} accent="sky" />
+            <KPIcard title="Status" value={alertData.responseStatus} accent="teal" />
           </div>
         </section>
-        <br></br>
+
         <section>
-          <div className="mb-4">
-            <h2 className="text-xl font-semibold text-slate-800">
-              Recent Alerts
-            </h2>
-          </div>
+          <h2 className="mb-5 text-lg font-semibold text-slate-800">
+            Recent Alerts
+          </h2>
 
           <div className="grid gap-4">
             {alertData.alerts.map((alert) => (
               <article
                 key={alert.id}
-                className="rounded-lg border border-slate-200 bg-white p-5 shadow-sm"
+                className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition-shadow hover:shadow-md"
               >
                 <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
                   <div>
@@ -70,16 +76,17 @@ function Alerts() {
 
                   <div className="flex flex-wrap gap-2 sm:justify-end">
                     <span
-                      className={`rounded-md border px-3 py-1 text-sm font-medium ${
+                      className={`inline-flex items-center gap-1.5 rounded-full border px-3 py-1 text-sm font-medium ${
                         severityStyles[alert.severity]
                       }`}
                     >
+                      <span className={`h-1.5 w-1.5 rounded-full ${severityDots[alert.severity]}`} />
                       {alert.severity}
                     </span>
-                    <span className="rounded-md border border-slate-200 bg-slate-50 px-3 py-1 text-sm font-medium text-slate-700">
+                    <span className="rounded-full border border-slate-200 bg-slate-50 px-3 py-1 text-sm font-medium text-slate-700">
                       {alert.noise}
                     </span>
-                    <span className="rounded-md border border-slate-200 bg-slate-50 px-3 py-1 text-sm font-medium text-slate-500">
+                    <span className="rounded-full border border-slate-200 bg-slate-50 px-3 py-1 text-sm font-medium text-slate-500">
                       {alert.time}
                     </span>
                   </div>

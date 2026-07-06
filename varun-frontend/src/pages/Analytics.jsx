@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import AnalyticsNav from "../components/AnalyticsNav";
 import Loading from "../components/Loading";
+import PageHeader from "../components/PageHeader";
 import PowerBIContainer from "../components/PowerBIContainer";
 import { getAnalyticsReports } from "../services/powerBIService";
 
@@ -22,14 +23,12 @@ function Analytics() {
   const activeReport = reports.find((report) => report.id === activeReportId);
 
   return (
-    <div className="min-h-screen w-full bg-slate-100 px-4 py-6 sm:px-8 lg:px-12">
-      <div className="w-full space-y-8">
-        <header>
-          <h1 className="text-4xl font-semibold text-slate-800">Analytics</h1>
-          <p className="mt-2 text-slate-500">
-            Embedded reporting workspace for operational and predictive insights.
-          </p>
-        </header>
+    <div className="min-h-screen w-full bg-gradient-to-b from-slate-50 to-slate-100 px-4 py-6 sm:px-8 lg:px-12">
+      <div className="mx-auto w-full max-w-7xl space-y-8 animate-fade-in-up">
+        <PageHeader
+          title="Analytics"
+          description="Prepared workspace for executive, operational, forecast, and alert analysis reports."
+        />
 
         <AnalyticsNav
           reports={reports}
@@ -40,7 +39,7 @@ function Analytics() {
         {activeReport ? (
           <PowerBIContainer report={activeReport} />
         ) : (
-          <div className="rounded-lg border border-slate-200 bg-white p-6 text-slate-500 shadow-sm">
+          <div className="rounded-2xl border border-slate-200 bg-white p-6 text-slate-500 shadow-sm">
             Select a report to view analytics.
           </div>
         )}
